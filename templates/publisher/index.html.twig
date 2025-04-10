@@ -34,7 +34,8 @@
 
         <div
                 {{ stimulus_controller('exchange_rate_history', {
-                    mercureUrl: mercure('https://example.com/exchange-rates')
+                    mercureUrl: mercure('https://example.com/exchange-rates'),
+                    maxRows: 8
                 }) }}
         >
             <h4>Recent Rate Updates</h4>

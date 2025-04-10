@@ -3,10 +3,10 @@ import { Controller } from '@hotwired/stimulus';
 export default class extends Controller {
     static targets = ["tbody"];
     static values = {
-        mercureUrl: String
+        mercureUrl: String,
+        maxRows: Number,
     }
     connect() {
-        this.maxRows = 10;
         this.subscribeToMercure();
     }
 
@@ -28,7 +28,7 @@ export default class extends Controller {
   `
         this.tbodyTarget.prepend(row)
 
-        while (this.tbodyTarget.rows.length > this.maxRows) {
+        while (this.tbodyTarget.rows.length > this.maxRowsValue) {
             this.tbodyTarget.deleteRow(-1)
         }
     }
