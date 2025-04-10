@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Market rates{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        <div class="row g-4 ps-md-4 ps-3" id="market-container">
+            {% for market in markets %}
+                <div
+                        {{ stimulus_controller('exchange_rate', {
+                            mercureUrl: mercure('https://example.com/exchange-rate/'~market),
+                            market: market
+                        }) }}
+
+                        class="col-sm-6 col-md-4 col-lg-3">
+                    <div class="card shadow p-3 price-card border border-secondary-subtle">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{ market }}</h5>
+                            <h3 class="card-text">
+                                <span {{ stimulus_target('exchange_rate', 'value') }} >-</span>
+                                <span {{ stimulus_target('exchange_rate', 'icon') }} class="ms-2"></span>
+                            </h3>
+                            <p
+                                    {{ stimulus_target('exchange_rate', 'diff') }}
+                                    class="mb-0 fw-semibold"></p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <hr class="my-5">
+
+        <div
+                {{ stimulus_controller('exchange_rate_history', {
+                    mercureUrl: mercure('https://example.com/exchange-rates')
+                }) }}
+        >
+            <h4>Recent Rate Updates</h4>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle mb-0" id="price-history">
+                    <thead class="table-light">
+                    <tr>
+                        <th>Market</th>
+                        <th>Rate</th>
+                        <th>Timestamp</th>
+                    </tr>
+                    </thead>
+                    <tbody
+                            {{ stimulus_target('exchange_rate_history', 'tbody') }}
+                    >
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

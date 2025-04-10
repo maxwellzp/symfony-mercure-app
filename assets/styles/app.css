@@ -1,3 +1,30 @@
-body {
-    background-color: skyblue;
+@import '~bootstrap';
+@import '~bootstrap-icons/font/bootstrap-icons.min.css';
+.price-card {
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #dee2e6;
+    border-radius: 1rem;
+}
+.price-up {
+    background-color: #d1e7dd;
+    border-color: #198754 !important;
+    box-shadow: 0 0 10px rgba(25, 135, 84, 0.3);
+}
+.price-down {
+    background-color: #f8d7da;
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 10px rgba(220, 53, 69, 0.3);
+}
+.arrow-up {
+    color: #198754;
+    animation: pop 0.5s ease;
+}
+.arrow-down {
+    color: #dc3545;
+    animation: pop 0.5s ease;
+}
+@keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
 }
