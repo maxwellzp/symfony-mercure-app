@@ -41,10 +41,10 @@ symfony server:start --no-tls -d
 symfony console app:binance-websocket
 ```
 
-### Usage
+## Usage
 * Access the application in any browser at the given URL http://127.0.0.1:8000/
 
-### Running Tests
+## Running Tests
 
 To run tests, run the following command
 
