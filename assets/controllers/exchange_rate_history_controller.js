@@ -15,16 +15,16 @@ export default class extends Controller {
 
         this.eventSource.onmessage = (event) => {
             const data = JSON.parse(event.data)
-            this.addRow(data.market, data.rate, data.timestamp);
+            this.addRow(data.market, data.rate, data.tradeTime);
         }
     }
 
-    addRow(market, rate, $timestamp) {
+    addRow(market, rate, tradeTime) {
         const row = document.createElement("tr")
         row.innerHTML = `
     <td>${market}</td>
     <td>${rate.toLocaleString()}</td>
-    <td>${$timestamp}</td>
+    <td>${tradeTime}</td>
   `
         this.tbodyTarget.prepend(row)
 
@@ -32,8 +32,6 @@ export default class extends Controller {
             this.tbodyTarget.deleteRow(-1)
         }
     }
-
-
 
     disconnect() {
         if (this.eventSource) {

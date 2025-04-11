@@ -13,7 +13,7 @@ final class PublisherController extends AbstractController
     #[Route('/', name: 'index_publisher')]
     public function index(): Response
     {
-        $markets = ['BTC-USD', 'ETH-USD', 'LTC-USD'];
+        $markets = ['BTCUSDT', 'ETHUSDT', 'BNBUSDT'];
         return $this->render('publisher/index.html.twig', [
             'markets' => $markets,
         ]);
